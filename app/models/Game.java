@@ -1,6 +1,8 @@
 package models;
 
-public class Game {
+import play.db.jpa.Model;
+
+public class Game extends Model {
     public int count;
     public Player[] player;
     public String result;

@@ -7,15 +7,15 @@
     <a id="button" class="button" href="#reset">リセット</a>
 </div>
 
-<form id="reset" title="リセット" class="dialog" target="_self" name="formname" action="http://demo.iui-js.org/test/form-echo.gtpl" method="GET">
-	<fieldset>
-        <h1>新しい乱数表</h1>
-        <a class="button leftButton" type="cancel">キャンセル</a>
-        <a class="button blueButton" type="submit">新規作成</a>
-        <label for="keyword">人数:</label>
-        <input id="keyword" type="text" name="q" />
-	</fieldset>
-</form>
+#{form @newGame(), method:'post', id:'reset', class:'dialog', target:'_self', title:'リセット' }
+<fieldset>
+    <h1>新しい乱数表</h1>
+    <a class="button leftButton" type="cancel">キャンセル</a>
+    <a class="button blueButton" type="submit">新規作成</a>
+    <label for="count">人数:</label>
+    <input type="text" id="count" name="count" />
+</fieldset>
+#{/form}
 
 <ul id="home" title="乱数表" selected="true">
     <li>
@@ -58,5 +58,5 @@
         <a class="digg-count">316</a>
         <a href="Moore_accuses_CNN_of_libel.html">Moore accuses CNN of libel</a>
     </li>
-    <li><a href="page1.html" target="_replace">Get 10 More Stories...</a></li>
+    <li><a href="page1.html" target="_replace">Get 10 More Games...</a></li>
 </ul>
