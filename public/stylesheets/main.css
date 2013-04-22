@@ -8,6 +8,17 @@ body > ul > li > a {
     min-height: 34px;
 }
 
+body > ul > li > a > i {
+	position: absolute;
+	left: 0;
+	bottom: 2px;
+	color: grey;
+	font-size: small;
+	font-style: normal;
+    padding-left: 54px;
+    padding-right: 40px;
+}
+
 li .digg-count {
     display: block;
     position: absolute;

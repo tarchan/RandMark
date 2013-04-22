@@ -57,6 +57,7 @@ public class Application extends Controller {
 			int p3 = list.remove();
 			int p4 = list.remove();
 			Game game = new Game(p1, p2, p3, p4);
+			game.result = "2-0";
 			game.save();
 		}
 		
