@@ -21,7 +21,7 @@
 #{list games}
 <li>
 <a class="digg-count">${_.id}</a>
-<a href="The_Thermonuclear_Oops_List.html">${_.toString()}</a>
+<a href="@{game(_.id)}">${_.toString()}</a>
 </li>
 #{/list}
 <li><a href="page1.html" target="_replace">Get 10 More Games...</a></li>

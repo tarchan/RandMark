@@ -21,7 +21,10 @@ public class Application extends Controller {
 	/**
 	 * Gameの詳細を表示します。
 	 */
-	public static void game(int id) {
+	public static void game(long id) {
+		List<Game> games = Game.find("byId", id).fetch();
+		Game game = games.get(0);
+		render(game);
 	}
 
 	/**
