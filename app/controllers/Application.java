@@ -4,6 +4,7 @@ import play.*;
 import play.mvc.*;
 
 import java.util.*;
+import java.util.concurrent.*;
 
 import models.*;
 
@@ -45,20 +46,28 @@ public class Application extends Controller {
 		}
 		
 		// make game
-		ArrayList<Integer> list = new ArrayList<>();
-		for (int i = 0; i < count; i++) {
-			list.add(i + 1);
-		}
-		Collections.shuffle(list);
-		for (int i = 0; i < count; i += 4) {
-			int p1 = list.get(i);
-			int p2 = list.get(i + 1);
-			int p3 = list.get(i + 2);
-			int p4 = list.get(i + 3);
+		int max = count * (count - 1);
+		LinkedList<Integer> list = new LinkedList<>();
+		for (int i = 0; i < max; i += 4) {
+			if (list.size() < 4) {
+				offerPlayer(list, count);
+			}
+			int p1 = list.remove();
+			int p2 = list.remove();
+			int p3 = list.remove();
+			int p4 = list.remove();
 			Game game = new Game(p1, p2, p3, p4);
 			game.save();
 		}
 		
 		index();
+	}
+
+	@Util
+	public static void offerPlayer(LinkedList<Integer> list, int count) {
+		for (int i = 0; i < count; i++) {
+			list.offer(i + 1);
+		}
+		Collections.shuffle(list);
 	}
 }
