@@ -14,8 +14,15 @@ public class Application extends Controller {
 	 * 試合の乱数表を表示します。
 	 */
     public static void index() {
-        render();
+    	List<Game> games = Game.findAll();
+        render(games);
     }
+
+	/**
+	 * Gameの詳細を表示します。
+	 */
+	public static void game(int id) {
+	}
 
 	/**
 	 * Player一覧
@@ -40,7 +47,13 @@ public class Application extends Controller {
 			list.add(i + 1);
 		}
 		Collections.shuffle(list);
-		for (int i = 0; i < count / 4; i++) {
+		for (int i = 0; i < count / 4; i += 4) {
+			int p1 = list.get(i);
+			int p2 = list.get(i + 1);
+			int p3 = list.get(i + 2);
+			int p4 = list.get(i + 3);
+			Game game = new Game(p1, p2, p3, p4);
+			game.save();
 		}
 		
 		index();
