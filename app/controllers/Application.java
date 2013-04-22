@@ -47,7 +47,7 @@ public class Application extends Controller {
 			list.add(i + 1);
 		}
 		Collections.shuffle(list);
-		for (int i = 0; i < count / 4; i += 4) {
+		for (int i = 0; i < count; i += 4) {
 			int p1 = list.get(i);
 			int p2 = list.get(i + 1);
 			int p3 = list.get(i + 2);
