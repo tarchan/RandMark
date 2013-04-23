@@ -820,6 +820,7 @@ function updatePage(page, fromPage)
 		showForm(page);
 		
 	var backButton = $("backButton");
+	var leftButton = $("leftButton");
 	if (backButton)
 	{
 		var prevPage = $(pageHistory[pageHistory.length-2]);
@@ -829,9 +830,13 @@ function updatePage(page, fromPage)
 			backButton.innerHTML = prevPage.title ? prevPage.title : "Back";
 			var bbClass = prevPage.getAttribute("bbclass");
 			backButton.className = (bbClass) ? 'button ' + bbClass : 'button';
+			leftButton.style.display = "none";
 		}
 		else
+		{
 			backButton.style.display = "none";
+			leftButton.style.display = "inline";
+		}
 	}
 	iui.busy = false;
 }
