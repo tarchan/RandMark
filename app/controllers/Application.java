@@ -55,9 +55,10 @@ public class Application extends Controller {
 		}
 
 		// make game
-		int max = count * (count - 1);
+		//int max = count * (count - 1);
+		int max = count * (count - 1) * (count - 2) * (count - 3);
 		LinkedList<Integer> list = new LinkedList<>();
-		for (int i = 0; i < max; i += 2) {
+		for (int i = 0; i < max; i += 4) {
 			if (list.size() < 4) {
 				offerPlayer(list, count);
 			}
