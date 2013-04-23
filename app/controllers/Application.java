@@ -33,6 +33,8 @@ public class Application extends Controller {
 	 * プレイヤーの勝敗表を表示します。
 	 */
 	public static void player() {
+		List<Player> players = Player.findAll();
+		render(players);
 	}
 
 	/**

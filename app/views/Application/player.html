@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+#{set title:'RandMark' /}
+
+<div class="toolbar">
+    <h1 id="pageTitle"></h1>
+    <a id="button" class="button leftButton" href="@{index}" target="_self">乱数表</a>
+</div>
+
+<ul id="home" title="プレイヤー" selected="true">
+#{list players}
+<li>${_.name}</li>
+#{/list}
+</ul>
