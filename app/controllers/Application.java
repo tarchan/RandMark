@@ -83,15 +83,21 @@ public class Application extends Controller {
 	@Util
 	public static void offerPlayer(LinkedList<Integer> list, int count) {
 		
-		List<Player> combi4 = Player.find("select p1 from Player p1, Player p2 where p1.number < p2.number").fetch();
-		Logger.info("###parent type: %s (%s)", combi4.getClass().getName(), combi4.size());
-		for (Player n4 : combi4) {
+		List<Player> combi1 = Player.find("select p1 from Player p1, Player p2 where p1.number < p2.number").fetch();
+		List<Player> combi2 = Player.find("select p2 from Player p1, Player p2 where p1.number < p2.number").fetch();
+		Logger.info("###parent type: %s (%s)", combi1.getClass().getName(), combi1.size());
+		for (int i = 0; i < combi1.size(); i++) {
+			Player p1 = combi1.get(i);
+			Player p2 = combi2.get(i);
+			Logger.info("##child type: %s, %s", p1.number, p2.number);
+		}
+		/*for (Player n4 : combi1) {
 			Logger.info("##child type: %s, %s (%s)", n4.getClass().getName(), n4.toString(), n4.number);
 			List l4 = Arrays.asList(n4);
 			for (Object l : l4) {
 				//Logger.info("#mago type: %s, %s", l.getClass().getName(), l.toString());
 			}
-		}
+		}*/
 
 		for (int i = 0; i < count; i++) {
 			list.offer(i + 1);
