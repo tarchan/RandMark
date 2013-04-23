@@ -35,9 +35,16 @@ public class Application extends Controller {
 	public static void player() {
 	}
 
+	/**
+	 * 指定された人数分の新しい乱数表を作成します。
+	 */
 	public static void newGame(int count) {
 		Player.deleteAll();
 		Game.deleteAll();
+		
+		if (count < 4) {
+			index();
+		}
 		
 		// make player
 		for (int i = 0; i < count; i++) {
@@ -62,6 +69,13 @@ public class Application extends Controller {
 		}
 		
 		index();
+	}
+
+	/**
+	 * 乱数表を追加します。
+	 */
+	public static void appendGame() {
+		long count = Player.count();
 	}
 
 	@Util

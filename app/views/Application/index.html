@@ -24,5 +24,8 @@
 <a href="@{game(_.id)}">${_.toString()} <i>${_.result}</i></a>
 </li>
 #{/list}
-<li><a href="page1.html" target="_replace">Get 10 More Games...</a></li>
+#{else}
+<li>Welcome to RandMark</li>
+#{/else}
+<li><a href="@{appendGame}" target="_replace">Get 10 More Games...</a></li>
 </ul>
