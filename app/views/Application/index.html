@@ -11,7 +11,7 @@
 <fieldset>
     <h1>新しい乱数表</h1>
     <a class="button leftButton" type="cancel">キャンセル</a>
-    <a class="button blueButton" type="submit">はじめる</a>
+    <a class="button blueButton" type="submit">新規作成</a>
     <label for="count">人数:</label>
     <input type="text" id="count" name="count" placeholder="4-50" />
 </fieldset>
@@ -28,6 +28,7 @@
 <li><a href="@{appendGame}" target="_replace">Get 10 More Games...</a></li>
 #{/if}
 #{else}
-<li>Welcome to RandMark</li>
+<li class="group">Welcome to RandMark</li>
+<li><a href="#reset">はじめる</a></li>
 #{/else}
 </ul>
