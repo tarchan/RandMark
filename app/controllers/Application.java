@@ -57,7 +57,7 @@ public class Application extends Controller {
 		// make game
 		int max = count * (count - 1);
 		LinkedList<Integer> list = new LinkedList<>();
-		for (int i = 0; i < max; i += 4) {
+		for (int i = 0; i < max; i += 2) {
 			if (list.size() < 4) {
 				offerPlayer(list, count);
 			}
@@ -82,14 +82,22 @@ public class Application extends Controller {
 
 	@Util
 	public static void offerPlayer(LinkedList<Integer> list, int count) {
-		
-		List<Player> combi1 = Player.find("select p1 from Player p1, Player p2 where p1.number < p2.number").fetch();
-		List<Player> combi2 = Player.find("select p2 from Player p1, Player p2 where p1.number < p2.number").fetch();
+		String combi = " from Player p1, Player p2, Player p3, Player p4 where p1.number < p2.number and p3.number < p4.number and p1.number != p3.number and p1.number != p4.number and p2.number != p3.number and p2.number != p4.number";
+		List<Player> combi1 = Player.find("select p1" + combi).fetch();
+		List<Player> combi2 = Player.find("select p2" + combi).fetch();
+		List<Player> combi3 = Player.find("select p3" + combi).fetch();
+		List<Player> combi4 = Player.find("select p4" + combi).fetch();
 		Logger.info("###parent type: %s (%s)", combi1.getClass().getName(), combi1.size());
 		for (int i = 0; i < combi1.size(); i++) {
 			Player p1 = combi1.get(i);
 			Player p2 = combi2.get(i);
-			Logger.info("##child type: %s, %s", p1.number, p2.number);
+			Player p3 = combi3.get(i);
+			Player p4 = combi4.get(i);
+			Logger.info("##child type: %s, %s - %s, %s", p1.number, p2.number, p3.number, p4.number);
+			list.offer(p1.number);
+			list.offer(p2.number);
+			list.offer(p3.number);
+			list.offer(p4.number);
 		}
 		/*for (Player n4 : combi1) {
 			Logger.info("##child type: %s, %s (%s)", n4.getClass().getName(), n4.toString(), n4.number);
@@ -98,10 +106,11 @@ public class Application extends Controller {
 				//Logger.info("#mago type: %s, %s", l.getClass().getName(), l.toString());
 			}
 		}*/
-
+		/*
 		for (int i = 0; i < count; i++) {
 			list.offer(i + 1);
 		}
 		Collections.shuffle(list);
+		*/
 	}
 }
