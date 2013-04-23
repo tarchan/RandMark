@@ -53,7 +53,7 @@ public class Application extends Controller {
 			Player player = new Player(i + 1);
 			player.save();
 		}
-		
+
 		// make game
 		int max = count * (count - 1);
 		LinkedList<Integer> list = new LinkedList<>();
@@ -82,6 +82,17 @@ public class Application extends Controller {
 
 	@Util
 	public static void offerPlayer(LinkedList<Integer> list, int count) {
+		
+		List<Player> combi4 = Player.find("select p1 from Player p1, Player p2 where p1.number < p2.number").fetch();
+		Logger.info("###parent type: %s (%s)", combi4.getClass().getName(), combi4.size());
+		for (Player n4 : combi4) {
+			Logger.info("##child type: %s, %s (%s)", n4.getClass().getName(), n4.toString(), n4.number);
+			List l4 = Arrays.asList(n4);
+			for (Object l : l4) {
+				//Logger.info("#mago type: %s, %s", l.getClass().getName(), l.toString());
+			}
+		}
+
 		for (int i = 0; i < count; i++) {
 			list.offer(i + 1);
 		}
